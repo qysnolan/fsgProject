@@ -1,0 +1,83 @@
+{% extends "Base.html" %}
+
+{% block title %}
+    Inventory List
+{% endblock %}
+
+{% block page-css %}
+    <meta name="viewport" content="width=device-width">
+
+<style type="text/css">
+td {
+    min-width: 100px;
+}
+
+th {
+    min-width: 100px;
+
+}
+
+.table-sorter {
+    float: right;
+    color: #d6d6d6;
+}
+
+.table-sorter:hover {
+    text-decoration: none;
+}
+
+.icon-sort-up ,.icon-sort-down {
+    color : mediumpurple;
+}
+
+.btn-activate {
+	padding-right:18px;
+	padding-left:18px;
+}
+
+.icon-ok-sign {
+    color: green;
+    font-size: 21px;
+}
+
+.icon-remove-sign {
+    color: red;
+    font-size: 21px;
+}
+
+div.italic {
+    font-style: italic;
+}
+
+</style>
+
+{% endblock %}
+
+{% block page-js %}
+    <script src="/static/js/libs/angular.min.js"></script>
+    <script src="/static/js/libs/angular-cookies.min.js"></script>
+    <script src="/static/js/libs/angular-resource.min.js"></script>
+    <script src="/static/js/libs/angular-route.min.js"></script>
+
+    <!-- build:js /angular_apps/js/scripts.js -->
+    <script src="/static/js/app/app.js"></script>
+    <script src="/static/js/app/controllers/inventory_controllers.js"></script>
+    <script src="/static/js/app/filters/inventory_filters.js"></script>
+    <script src="/static/js/app/services/inventory_services.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+        var base_url = "{{ url|safe }}";
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" ng-app="inventoryApp">
+
+    <div ng-view></div>
+
+</div>
+
+{% endblock %}

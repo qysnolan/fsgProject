@@ -1,0 +1,50 @@
+<div class="container-fluid" style="margin-top: 30px">
+    <div class="span4 nav-scroll" style="margin-left: 0">
+        <div class="service-picture-frame">
+            <img class="service-picture"
+                 ng-src="/static/imgs/network.gif"
+                 alt="{{ movie.title }}">
+        </div>
+    </div>
+    <div class="span8 pull-right nav-button" style="margin-right: 30px">
+        <div class="span6" >
+            <h2>Movie: {{ movie.title }}</h2>
+        </div>
+        <div class="pull-right center" style="margin-right: 20px;">
+            <h6 style="color: darkred; margin: 0">
+                {{ movie.rental_rate | currency:"USD$" }}
+            </h6>
+            <a class="btn btn-success"
+               href="/home">
+                Rent Now
+            </a>
+        </div>
+    </div>
+    <div class="span8 pull-right" style="margin-top: 30px;">
+        <h4><i class="icon-hand-right"></i> Movie ID: {{ movie.film_id }}</h4>
+        <h4><i class="icon-hand-right"></i> Inventories:</h4>
+        <a ng-repeat="r in movie.inventory_movie"
+           href="/inventory/#/detail/{{ r }}">
+            {{ r }}
+        </a>
+        <h4><i class="icon-hand-right"></i> Description:</h4>
+        <p style="padding-left: 30px; padding-right: 30px">
+            {{ movie.description }}
+        </p>
+        <div >
+            <h4><i class="icon-hand-right"></i> Details: </h4>
+            <ul>
+                <li>Release Year: {{movie.release_year}}</li>
+                <li>Rental Duration: {{movie.rental_duration}} day(s)</li>
+                <li>Length: {{movie.length}} minute(s)</li>
+                <li>Rental Rate: {{movie.rental_rate | currency:"USD$"}}</li>
+                <li>Replacement Cost: {{movie.replacement_cost | currency:"USD$"}}</li>
+                <li>Rating: {{movie.rating}}</li>
+                <li>Special Features: {{movie.special_features}}</li>
+                <li>Language: {{movie.language_name}}</li>
+                <li>Original Language: {{movie.original_language_name}}</li>
+                <li>Last Update: {{movie.last_update}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

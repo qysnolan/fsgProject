@@ -1,0 +1,211 @@
+{% extends "Base.html" %}
+
+{% load url from future %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block page-css %}
+<style type="text/css">
+div.product {
+    margin: 10px;
+    padding: 10px;
+    border: solid lightgrey 1px;
+    box-shadow: 6px 6px 3px #afafaf;
+}
+.search-box-title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: Fantasy;
+    font-weight: bold;
+    font-size: 48px;
+    font-variant: small-caps;
+    color: #4682B4;
+}
+.search-button {
+    margin: 3px 15px 3px 15px;
+    color: rgb(48,48,48);
+}
+
+.point {
+	stroke: steelblue;
+	stroke-width: 5px;
+}
+
+.xaxis_path, .xaxis_pathdomain {
+	stroke: purple;
+}
+
+.yaxis_path, .yaxis_pathdomain {
+	stroke: darkgray;
+}
+
+
+div.newgraph {
+{#    .div.span4;#}
+{#	background-color: #fffdf6;#}
+	border:1px solid gray;
+	margin:5px;
+	float:left;
+}
+
+div.rownew {
+	position: relative;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.legend,
+.axis,
+.label_scatter {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.bar {
+  fill: rgb(23,214,255);
+}
+
+.x.axis path {
+  display: none;
+}
+
+.arc path {
+  stroke: grey;
+}
+
+.sort {
+{#	position: relative;#}
+{#	top: 5px;#}
+{#	left: 5px;#}
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.refresh-notice {
+    text-align: right;
+    font-size: 0.85em;
+    color: gray;
+}
+
+.icon-minus-sign {
+    color: red;
+}
+
+.icon-plus-sign {
+    color: green;
+}
+
+.hide {
+    display:none;
+}
+.move_down {
+    margin-left: 0.5em !important;
+    margin-right: 0.5em;
+    margin-top: 9.5px;
+}
+.msg_select {
+    display: inline-block;
+}
+
+.line {
+    fill: none;
+    stroke: orange;
+    stroke-width: 1.0px;
+}
+
+#drop-shadow-div {
+    width: 0;
+    height: 0;
+
+}
+</style>
+{% endblock %}
+
+{% block page-js %}
+<script src="/static/js/libs/d3.min.js"></script><br />
+{% endblock %}
+
+{% block content %}
+<br />
+
+<div class="container center">
+
+    <div class="search-box-title">
+        FSG Project
+    </div>
+
+    <div id="dashGraphs">
+        <div class="rownew1">
+            <div id="graph1" class="newgraph" >
+                <label class="sort pull-left"><input id="scatterSaleStore" type="checkbox">
+                    Scatter
+                </label>
+            </div>
+            <div id="graph2" class="newgraph">
+                <label class="sort pull-left"><input id="sortSaleCategory" type="checkbox">
+                    Sort
+                </label>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/static/js/reports/scatter_plot.js"></script>
+        <script type="text/javascript" src="/static/js/reports/bar_chart.js"></script>
+
+        <script type="text/javascript">
+
+        //Getting useful data
+        var divID1 = " ", divID2 = " ";
+        var sortID = " ", scatterID = " ";
+        var name_scatter = " ", name_scatter_Y = " ", name_scatter_X = " ",
+                name_bar = " ", name_bar_Y = " ";
+        var dataset_scatterplot = [], dataset_barchart = [];
+        var dataset_scatterplotX = [], dataset_scatterplotY = [],
+                dataset_barchartX = [], dataset_barchartY = [];
+
+        dataset_scatterplotX = {{salesStoreName|safe}};
+        dataset_scatterplotY = {{salesStoreNumber|safe}};
+        divID1 = "#graph1";
+        name_scatter = "Sales by Store";
+        name_scatter_Y = "Total of Sales (USD$)";
+        name_scatter_X = "Store";
+        scatterID = "#scatterSaleStore";
+
+        dataset_barchartX = {{salesCategoryName|safe}};
+        dataset_barchartY = {{salesCategoryNumber|safe}};
+        divID2 = "#graph2";
+        name_bar = "Sales by Movie Category";
+        name_bar_Y = "Total of Sales (USD$)";
+        sortID = "#sortSaleCategory";
+
+        // Initializing data
+        for (var i = 0; i < dataset_scatterplotY.length; i++) {
+                var item1 = dataset_scatterplotX[i];
+                var item2 = dataset_scatterplotY[i];
+                dataset_scatterplot.push([item1,item2]);
+        }
+
+        for (var j = 0; j < dataset_barchartX.length; j++) {
+            var num1 = dataset_barchartX[j];
+            var num2 = dataset_barchartY[j];
+            var num3 = j;
+            dataset_barchart.push([num1,num2,num3]);
+        }
+
+        var chart_width = 500;
+        scatterPlot(divID1, scatterID, dataset_scatterplot, name_scatter,
+                name_scatter_X, name_scatter_Y, chart_width);
+        barChart(divID2, sortID, dataset_barchart, name_bar, "", name_bar_Y,
+                chart_width);
+
+        </script>
+    </div>
+
+</div>
+{% endblock %}

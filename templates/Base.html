@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<title>
+        {% block title %}
+        {% endblock %}
+        | FSG Project
+	</title>
+    
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link rel="shortcut icon" type="image/x-icon"
+          href="/static/imgs/app.jpg" />
+    <link rel="icon" type="image/x-icon"
+          href="/static/imgs/app.jpg" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/files/css/font-awesome/font-awesome-ie7.css">
+    <![endif]-->
+    
+    {% block global-css %}
+<link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+<style type="text/css">
+a.nav-scroll {
+    position: fixed;
+    right: 30px
+}
+.clearable {
+    background:url(/static/imgs/icons/cross_black.png) no-repeat right -20px center;
+    border:1px solid #999;
+    padding:3px 18px 3px 4px; /* USE the same right padding in jQ! */
+    border-radius:3px;
+    transition: background 0.4s;
+}
+/* (jQ addClass:) if input has value: */
+.clearable.x{
+    background-position: right 5px center;
+}
+/* (jQ addClass:) if mouse is over the 'x' input area*/
+.clearable.onX{
+    cursor:pointer;
+}
+.navbar-inner{
+    min-height:40px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:#f9f9f9;
+    background-image:-moz-linear-gradient(top, #fff, #f2f2f2);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2));
+    background-image:-webkit-linear-gradient(top, #fff, #f2f2f2);
+    background-image:-o-linear-gradient(top, #fff, #f2f2f2);
+    background-image:linear-gradient(to bottom, #ffffff,#f2f2f2);
+    background-repeat:repeat-x;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF2F2F2', GradientType=0);
+    border:1px solid #d4d4d4;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow:0 1px 4px rgba(0,0,0,0.065);
+    -moz-box-shadow:0 1px 4px rgba(0,0,0,0.065);
+    box-shadow:0 1px 4px rgba(0,0,0,0.065);*zoom:1
+}
+div.nav-scroll {
+    position: fixed;
+}
+.border-frame {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid lightblue;
+    opacity: 0.7;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+div.nav-button {
+    right: 65px;
+    top: 50px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    background: rgba(245,245,245,0.8);
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+</style>
+    {% endblock %}
+    
+	{% block page-css %}
+
+	{% endblock %}
+    
+	<script type="text/javascript"
+            src="/static/js/all/min/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="/static/js/all/bootstrap.js"></script>
+
+	<script type="text/javascript"
+            src="/static/js/all/plugins/jquery.dataTables.min.js"></script>
+
+	<script type="text/javascript"
+            src="/static/js/all/global.js"></script>
+
+    <script type="text/javascript">
+    function tog(v){return v?'addClass':'removeClass';}
+
+    $(document).on('input', '.clearable', function(){
+        $(this)[tog(this.value)]('x');
+    }).on('mousemove', '.x', function( e ){
+        $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+    }).on('click', '.onX', function(){
+        $(this).removeClass('x onX').val('');
+    });
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false},
+        'google_translate_element');}
+        var googleTranslateScript = document.createElement('script');
+        googleTranslateScript.type = 'text/javascript';
+        googleTranslateScript.async = true;
+        googleTranslateScript.src =
+          '//translate.google.com/translate_a/element.js?' +
+            'cb=googleTranslateElementInit';
+        ( document.getElementsByTagName('head')[0] ||
+           document.getElementsByTagName('body')[0] )
+                .appendChild(googleTranslateScript);
+        googleTranslateScript.async = true;
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37132105-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type
+              = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    $(function () {
+         $('#scrlBotm').click(function () {
+             $('html, body').animate({
+                 scrollTop: $(document).height()
+             },
+             1500);
+             return false;
+         });
+
+         $('#scrlTop').click(function () {
+             $('html, body').animate({
+                 scrollTop: '0px'
+             },
+             1500);
+             return false;
+         });
+     });
+    </script>
+        
+	{% block page-js %}
+
+	{% endblock %}
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button class="btn btn-navbar" data-toggle="collapse"
+                            data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/home/" class="brand" data-event-trigger="click"
+                       data-event-category="navbar" data-event-action="click"
+                       data-event-label="Home">
+                        <img class="logo" src="/static/imgs/app.jpg"
+                             style="height: 21px; width: 34px" />
+                        FSG Project
+                    </a>
+                    <div class="nav-collapse collapse">
+
+                        <ul class="nav">
+                            <li>
+                                <a href="{% url "movie" %}"
+                                   data-event-trigger="click"
+                                   data-event-category="navbar"
+                                   data-event-action="click"
+                                   data-event-label="navbar-good">
+                                    Movie
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url "customer" %}"
+                                   data-event-trigger="click"
+                                   data-event-category="navbar"
+                                   data-event-action="click"
+                                   data-event-label="navbar-good">
+                                    Customer
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url "rental" %}"
+                                   data-event-trigger="click"
+                                   data-event-category="navbar"
+                                   data-event-action="click"
+                                   data-event-label="navbar-good">
+                                    Rental
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url "inventory" %}"
+                                   data-event-trigger="click"
+                                   data-event-category="navbar"
+                                   data-event-action="click"
+                                   data-event-label="navbar-good">
+                                    Inventory
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav pull-right">
+                            <li>
+                                <form class="span4 pull-right well-small"
+                                      style="margin-bottom: 0; padding-bottom: 0"
+                                      action="/movie/" id="searchField"
+                                      method="POST">
+                                     {% csrf_token %}
+                                    <input class="clearable span3"
+                                           style="margin-bottom: 0"
+                                           type="search" name="searchValue"
+                                           placeholder="Search movies here..."
+                                            {% if searchValue %}
+                                                value='{{searchValue|safe}}'
+                                            {% endif %} >
+                                    <button class="btn btn-small btn-success"
+                                            style="margin: 0">
+                                        <input class="hidden"
+                                               style="margin: 0"
+                                               type="submit" value="">
+                                        <i class="icon-search"></i>
+                                    </button>
+                                </form>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown">
+                                        Username
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{% url "settings" %}"
+                                           data-event-trigger="click"
+                                           data-event-category="navbar"
+                                           data-event-action="click"
+                                           data-event-label="orders">
+                                            <i class="icon-cog"></i>
+                                               Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url "login" %}"
+                                           data-event-trigger="click"
+                                           data-event-category="navbar"
+                                           data-event-action="click"
+                                           data-event-label="settings">
+                                            <i class="icon-signin"></i>
+                                               Login
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url "create_account" %}"
+                                           data-event-trigger="click"
+                                           data-event-category="navbar"
+                                           data-event-action="click"
+                                           data-event-label="Help">
+                                            <i class="icon-plus-sign-alt"></i>
+                                               Create account
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="{% url "sign_out" %}"
+                                           data-event-trigger="click"
+                                           data-event-category="navbar"
+                                           data-event-action="click"
+                                           data-event-label="Sign out">
+                                            <i class="icon-signout"></i>
+                                                Sign out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content" style="padding-top: 30px;">
+
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="center social" style="margin-left:13px">
+                        <div class="btn-group dropup">
+                            <a href="https://www.facebook.com/yunsheng.qi"
+                               class="btn btn-small" target="_blank"
+                               data-event-trigger="click"
+                               data-event-category="social"
+                               data-event-action="click"
+                               data-event-label="Facebook">
+                                <i class="icon-facebook-sign"></i> Like
+                            </a>
+                            <a href="https://twitter.com/qysnolan"
+                               class="btn btn-small" target="_blank"
+                               data-event-trigger="click"
+                               data-event-category="social"
+                               data-event-action="click"
+                               data-event-label="Twitter">
+                                <i class="icon-twitter"></i> Follow
+                            </a>
+                            <button class="btn btn-small dropdown-toggle"
+                                    onclick="$('.goog-te-gadget-simple').click()"
+                                    data-event-trigger="click"
+                                    data-event-category="social"
+                                    data-event-action="click"
+                                    data-event-label="Translate">
+                                <i class="icon-globe"></i> Translate
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                              <li><div id="google_translate_element"></div></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <div>
+            <a id="scrlTop" class="nav-scroll" title="Top" href="#"
+               style="bottom: 377px;">
+                <i class="icon-chevron-up"></i>
+            </a>
+            <a class="nav-scroll" href="{% url "home" %}" title="Home"
+               style="bottom: 339px;">
+                <i class="icon-home"></i>
+            </a>
+            <a id="scrlBotm" class="nav-scroll" title="Bottom" href="#"
+               style="bottom: 300px;">
+                <i class="icon-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

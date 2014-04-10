@@ -1,0 +1,132 @@
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+          <div class="page-header">
+		    <a href="{% url "add_inventory" %}" class="page-header-right btn">
+                <i class="icon-plus"></i> Add inventory</a>
+            <h1>Inventory List</h1>
+        </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="span4" >
+                <div class="search-box">
+                    <label>
+                        Search:
+                        <input ng-model="query" ng-disabled="count==0"
+                               type="text" class="input-large"
+                               placeholder="By Inventory ID">
+                    </label>
+                </div>
+            </div>
+
+            <div class="span8" ng-show="inventories!=null">
+                <div class="btn-group">
+                <button class="btn btn-info" ng-disabled="firstDisable"
+                        ng-click="getInventories(base_url, 1)">
+                    <i class="icon-fast-backward"></i> First page
+                </button>
+                <button  class="btn btn-info" ng-disabled="previousDisable"
+                         ng-click="getInventories(previous, 2)">
+                    <i class="icon-backward"></i> Previous page
+                </button>
+                <button class="btn btn-primary" ng-disabled="true">
+                    <b>{{ currentPage }}</b>
+                </button>
+                <button  class="btn btn-info" ng-disabled="nextDisable"
+                         ng-click="getInventories(next, 3)">
+                    Next page <i class="icon-forward"></i>
+                </button>
+                <button  class="btn btn-info" ng-disabled="lastDisable"
+                         ng-click="getInventories(base_url+'?page='+totalPages, 4)">
+                    Last page <i class="icon-fast-forward"></i>
+                </button>
+                </div>
+
+                <div class="pull-right">
+                    <button  class="btn btn-success"
+                             ng-click="goToPage(pageNumber)">
+                        Go to
+                    </button>
+                    <select ng-model="pageNumber"
+                            ng-options="p.number for p in pages"
+                            style="width: 100px; margin: 0" >
+                        <option value="">-- page --</option>
+                    </select>
+                </div>
+                <button class="btn btn-danger" ng-show="count == 0"
+                        ng-disabled="count == 0">
+                    Sorry, no result found... <br/>Please change your search
+                </button>
+                <div class="pull-right" style="margin:10px" ng-show="count!=0">
+                <i>Showing {{ firstEntry }}-{{ lastEntry }} of
+                    <b>{{ count }}</b> result(s)
+                </i>
+                </div>
+            </div>
+
+            <table class="table table-striped table-bordered" id="inventoryTable">
+
+            <thead>
+                <tr>
+                <th ng-repeat="(i,th) in column_head"
+                    ng-click="changeSorting(i)">
+                    {{ th }}
+                    <a  class="table-sorter">
+                    <i ng-class="{'icon-sort-up':i==sort.column && sort.descending,
+                        'icon-sort-down':i==sort.column && !sort.descending,
+                        'icon-sort':i!=sort.column}">
+                    </i>
+                    </a>
+                </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="inventory in inventories | filter:query | orderBy:orderProp">
+                    <td>
+                        <a href="#/detail/{{inventory.inventory_id}}">
+                            {{ inventory.inventory_id}}
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/movie">
+                            {{ inventory.movie_name}}
+                        </a>
+                    </td>
+
+                    <td>
+                        <div>
+                        {{ inventory.store_id }}
+                        </div>
+                    </td>
+
+                    <td>
+                        <div>
+                        {{ inventory.last_update | date:'MMM dd, yyyy, HH:mm' }}
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr ng-show="count == undefined">
+                    <td colspan="8" class="center">
+                        <h1>
+                            <i class="icon-refresh icon-large icon-spin"></i>
+                            Loading inventories...
+                        </h1>
+                    </td>
+                </tr>
+                <tr ng-show="false"></tr>
+                <tr ng-show="count == 0">
+                    <td colspan="8" class="center">No inventory found</td>
+                </tr>
+		    </tbody>
+            </table>
+        </div>
+    </div>
+</div>

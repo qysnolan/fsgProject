@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Authentication failed - ChoiceNet Shopper</title>
+        <style>
+            body {
+                background: #ffffff;
+                margin: 0;
+                padding: 20px;
+                text-align:center;
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:14px;
+                color:#666666;
+            }
+
+            .choice-list{
+                position: relative;
+                left: 120px;
+                text-align:left;
+                width: 300px;
+                background: gainsboro;
+                margin: 20px;
+                border-radius: 20px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                padding-right: 15px;
+            }
+
+            .error_page {
+                width: 600px;
+                padding: 50px;
+                margin: auto;
+            }
+            .error_page h1 {
+                margin: 20px 0 0;
+            }
+            .error_page p {
+                margin: 10px 0;
+                padding: 0;
+            }
+            div.error_403 {
+                position: absolute;
+                right: 400px;
+                top: 200px;
+                font-size: 50px;
+                -webkit-transform: rotate(30deg);
+                -moz-transform: rotate(30deg);
+                transform: rotate(30deg);
+            }
+            a {
+                color: #9caa6d;
+                text-decoration:none;
+            }
+            a:hover {
+                color: #9caa6d;
+                text-decoration:underline;
+            }
+
+            div.smileyface {
+                width: 300px;
+                height: 300px;
+                position: relative;
+                left: 150px;
+                border-radius: 150px;
+                -webkit-border-radius: 150px;
+                -moz-border-radius: 150px;
+                -webkit-animation:moveFace 4s linear infinite;
+                -ms-animation:moveFace 4s linear infinite;
+                animation:moveFace 4s linear infinite;
+                display: block;
+                background: #ffe632;
+                background: -webkit-gradient(linear, left top, left bottom, from(#fffe8d), to(#f6d23e));
+                background: -moz-linear-gradient(top,  #fffe8d,  #f6d23e);
+
+                }
+
+            p.eyes {
+                width: 50px;
+                height: 50px;
+                background: #ffffff;
+                border-radius: 100px;
+                -webkit-border-radius: 100px ;
+                -moz-border-radius: 100px;
+                -webkit-animation:moveEye 0.8s linear infinite;
+                -ms-animation:moveEye 0.8s linear infinite;
+                animation:moveEye 0.8s linear infinite;
+                position: absolute;
+                left: 120px;
+                top: 20px;
+                }
+
+            div.smile {
+                width:0;
+                height:0;
+                border-right:150px solid white;
+                border-top:150px solid transparent;
+                border-bottom:150px solid transparent;
+                -webkit-animation:moveSmile 0.8s linear infinite;
+                -ms-animation:moveSmile 0.8s linear infinite;
+                animation:moveSmile 0.8s linear infinite;
+                position: absolute;
+                bottom: 0px;
+                left: 150px;
+                }
+
+            @-webkit-keyframes moveFace{
+                0% {
+                    left: 150px;
+                }
+                50% {
+                    left: -150px;
+                }
+                100% {
+                    left: 150px;
+                }
+            }
+
+            @-webkit-keyframes moveEye{
+                0% {
+                    left: 130px;
+                    top: 20px;
+                }
+                10% {
+                    left: 190px;
+                    top: 51px;
+                }
+                50% {
+                    left: 190px;
+                    top: 50px;
+                }
+                60% {
+                    left: 130px;
+                    top: 20px;
+                }
+                100% {
+                    left: 130px;
+                    top: 20px;
+                }
+            }
+
+            @-webkit-keyframes moveSmile{
+                0% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                10% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                50% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                60% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                100% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+            }
+
+
+
+            @-ms-keyframes moveFace{
+                0% {
+                    left: 150px;
+                }
+                50% {
+                    left: -150px;
+                }
+                100% {
+                    left: 150px;
+                }
+            }
+
+            @-ms-keyframes moveEye{
+                0% {
+                    left: 130px;
+                    top: 20px;
+                }
+                10% {
+                    left: 190px;
+                    top: 51px;
+                }
+                50% {
+                    left: 190px;
+                    top: 50px;
+                }
+                60% {
+                    left: 130px;
+                    top: 20px;
+                }
+                100% {
+                    left: 130px;
+                    top: 20px;
+                }
+            }
+
+            @-ms-keyframes moveSmile{
+                0% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                10% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                50% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                60% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                100% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+            }
+
+            @keyframes moveFace{
+                0% {
+                    left: 150px;
+                }
+                50% {
+                    left: -150px;
+                }
+                100% {
+                    left: 150px;
+                }
+            }
+
+            @keyframes moveEye{
+                0% {
+                    left: 130px;
+                    top: 20px;
+                }
+                10% {
+                    left: 190px;
+                    top: 51px;
+                }
+                50% {
+                    left: 190px;
+                    top: 50px;
+                }
+                60% {
+                    left: 130px;
+                    top: 20px;
+                }
+                100% {
+                    left: 130px;
+                    top: 20px;
+                }
+            }
+
+            @keyframes moveSmile{
+                0% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                10% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                50% {
+                    border-top:5px solid transparent;
+                    border-bottom:5px solid transparent;
+                    bottom: 150px;
+                }
+                60% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+                100% {
+                    border-top:150px solid transparent;
+                    border-bottom:150px solid transparent;
+                    bottom: 0px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+          <div class="error_page">
+              <div class="smileyface">
+                    <p class="eyes"></p>
+                    <div class="smile"></div>
+              </div>
+              <div class="error_403"><strong>403!</strong></div>
+
+              <h1>We're sorry... Error 403</h1>
+              <p>Your authentication is failed </p>
+
+              <ul class="choice-list lists">
+                  <li>Return to <a href="/">homepage</a> and use other functions of this website </li>
+                  <li>If you're sure you're authorized, try again </li>
+                  <li>If you're keep seeing this page, contact administrator </li>
+              </ul>
+
+              <p><a href="/">Return to FSG Movie Rental homepage</a></p>
+
+        </div>
+    </body>
+</html>

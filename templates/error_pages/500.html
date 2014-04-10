@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Server error - ChoiceNet Shopper</title>
+        <style>
+            body {
+                background: #ffffff;
+                margin: 0;
+                padding: 20px;
+                text-align:center;
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:14px;
+                color:#666666;
+            }
+
+            .error_page {
+                width: 600px;
+                padding: 50px;
+                margin: auto;
+            }
+            .error_page h1 {
+                margin: 20px 0 0;
+            }
+            .error_page p {
+                margin: 10px 0;
+                padding: 0;}
+            a {
+                color: #9caa6d;
+                text-decoration:none;
+            }
+            a:hover {
+                color: #9caa6d;
+                text-decoration:underline;
+            }
+
+            div.back{
+                position: relative;
+                width: 600px;
+                height: 300px;
+                box-shadow: inset 0 0 14px rgba(0, 0, 0, .3), 0 2px 20px rgba(0, 0, 0, .6);
+                -webkit-box-shadow: inset 0 0 14px rgba(0, 0, 0, .3), 0 2px 20px rgba(0, 0, 0, .6);
+	            -moz-box-shadow: inset 0 0 14px rgba(0, 0, 0, .3), 0 2px 20px rgba(0, 0, 0, .6);
+                }
+
+            div.top{
+                background: rgb(11,168,255);
+                position: absolute;
+                width: 600px;
+                height: 248px;
+
+                }
+
+            h1.back-font{
+                padding-top: 40px;
+                color:#ffffff;
+                text-shadow: 1px 1px #000000;
+                font-family: Comic sans MS, Helvetica, sans-serif;
+                font-size: 35px;
+            }
+
+            div.bottom{
+                background: rgb(63,87,125);
+                position: absolute;
+                bottom: 0;
+                width: 600px;
+                height: 50px;
+            }
+
+            p.bottom-font{
+                color:#ffffff;
+                text-shadow: 1px 1px #000000;
+                font-size: 14px;
+                font-family: Verdana, Helvetica, sans-serif;
+                padding-top: 7px;
+            }
+
+            div.stop-bottom {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 30px;
+                bottom: 45px;
+                border-radius: 50px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                display: block;
+                background: rgb(63,87,125);
+                -webkit-animation:moveBottom 4s linear;
+                -ms-animation:moveBottom 4s linear;
+                animation:moveBottom 4s linear;
+            }
+
+            div.stop-middle {
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                left: 45px;
+                bottom: 60px;
+                border-radius: 35px;
+                -webkit-border-radius: 35px;
+                -moz-border-radius: 35px;
+                display: block;
+                background: rgb(11,168,255);
+                -webkit-animation:moveMiddle 4s linear;
+                -ms-animation:moveMiddle 4s linear;
+                animation:moveMiddle 4s linear;
+            }
+
+            div.stop-top {
+                width: 17.5px;
+                height: 85px;
+                background-color: rgb(63,87,125);
+                border-radius: 10px;
+                -moz-border-radius: 4px;
+                position: absolute;
+                left: 71px;
+                bottom: 52.5px;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                transform: rotate(45deg);
+                -webkit-animation:moveTop 4s linear;
+                -ms-animation:moveTop 4s linear;
+                animation:moveTop 4s linear;
+            }
+
+            @-webkit-keyframes moveBottom{
+                0% {
+                    left: 30px;
+                }
+                50% {
+                    left: 344px;
+                }
+                100% {
+                    left: 30px;
+                }
+            }
+
+            @-webkit-keyframes moveMiddle{
+                0% {
+                    left: 45px;
+                }
+                50% {
+                    left: 359px;
+                }
+                100% {
+                    left: 45px;
+                }
+            }
+
+            @-webkit-keyframes moveTop{
+                0% {
+                    left: 71px;
+                    -webkit-transform: rotate(45deg);
+                }
+                50% {
+                    left: 385px;
+                    -webkit-transform: rotate(465deg);
+                }
+                100% {
+                    left: 71px;
+                    -webkit-transform: rotate(45deg);
+                }
+            }
+
+            @-ms-keyframes moveBottom{
+                0% {
+                    left: 30px;
+                }
+                50% {
+                    left: 344px;
+                }
+                100% {
+                    left: 30px;
+                }
+            }
+
+            @-ms-keyframes moveMiddle{
+                0% {
+                    left: 45px;
+                }
+                50% {
+                    left: 359px;
+                }
+                100% {
+                    left: 45px;
+                }
+            }
+
+            @-ms-keyframes moveTop{
+                0% {
+                    left: 71px;
+                    -moz-transform: rotate(45deg);
+                }
+                50% {
+                    left: 385px;
+                    -moz-transform: rotate(465deg);
+                }
+                100% {
+                    left: 71px;
+                    -moz-transform: rotate(45deg);
+                }
+            }
+
+            @keyframes moveBottom{
+                0% {
+                    left: 30px;
+                }
+                50% {
+                    left: 344px;
+                }
+                100% {
+                    left: 30px;
+                }
+            }
+
+            @keyframes moveMiddle{
+                0% {
+                    left: 45px;
+                }
+                50% {
+                    left: 359px;
+                }
+                100% {
+                    left: 45px;
+                }
+            }
+
+            @keyframes moveTop{
+                0% {
+                    left: 71px;
+                    transform: rotate(45deg);
+                }
+                50% {
+                    left: 385px;
+                    transform: rotate(465deg);
+                }
+                100% {
+                    left: 71px;
+                    transform: rotate(45deg);
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="error_page">
+            <div class="back">
+                <div class="top">
+                    <h1 class="back-font">We're sorry... </br>Error 500</h1>
+                </div>
+                
+                <div class="bottom">
+                    <p class="bottom-font">
+                        The page you were attempting to view could not be
+                        loaded.
+                    </p>
+                </div>
+                
+                <div class="stop-bottom"></div>
+                <div class="stop-middle"></div>
+                <div class="stop-top"></div>
+            </div>
+
+            <p><a href="/">Go to the FSG Movie Rental homepage</a></p>
+        </div>
+    </body>
+</html>

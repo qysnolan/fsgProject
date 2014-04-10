@@ -1,0 +1,48 @@
+<div class="container-fluid" style="margin-top: 30px">
+    <div class="span4 nav-scroll" style="margin-left: 0">
+        <div class="service-picture-frame">
+            <img class="service-picture"
+                 ng-src="/static/imgs/network.gif"
+                 alt="{{ rental.rental_id }}">
+        </div>
+    </div>
+    <div class="span8 pull-right nav-button" style="margin-right: 30px">
+        <div class="span6" >
+            <h2>Rental: {{ rental.rental_id }}</h2>
+        </div>
+        <div class="pull-right center" style="margin-right: 20px; margin-top: 15px">
+            <a class="btn btn-success" href="/home"
+               ng-show="rental.return_date == undefined">
+                Return
+            </a>
+        </div>
+    </div>
+    <div class="span8 pull-right" style="margin-top: 30px;">
+        <h4><i class="icon-hand-right"></i> Rental ID: {{ rental.rental_id }}</h4>
+        <h4><i class="icon-hand-right"></i> Inventory:</h4>
+        <a href="/inventory/#/detail/{{ rental.inventory_id }}"
+           style="padding-left: 30px; padding-right: 30px">
+            {{ rental.inventory_id }}
+        </a>
+        <h4><i class="icon-hand-right"></i> Customer:</h4>
+        <a href="/customer" style="padding-left: 30px; padding-right: 30px">
+            {{ rental.customer_name }}
+        </a>
+        <h4><i class="icon-hand-right"></i> Staff: {{ rental.staff_name }}</h4>
+        </a>
+        <div >
+            <h4><i class="icon-hand-right"></i> Details: </h4>
+            <ul>
+                <li>Payment:
+                    <span ng-repeat="p in rental.payment_rental"
+                        style="color: darkred; margin: 0">
+                        {{ p | currency:"USD$" }}
+                    </span>
+                </li>
+                <li>Rental Date: {{rental.rental_date}}</li>
+                <li>Return Date: {{rental.return_date}}</li>
+                <li>Last Update: {{rental.last_update}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

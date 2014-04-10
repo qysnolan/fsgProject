@@ -1,0 +1,39 @@
+<div class="container-fluid" style="margin-top: 30px">
+    <div class="span4 nav-scroll" style="margin-left: 0">
+        <div class="service-picture-frame">
+            <img class="service-picture"
+                 ng-src="/static/imgs/network.gif"
+                 alt="{{ inventory.inventory_id }}">
+        </div>
+    </div>
+    <div class="span8 pull-right nav-button" style="margin-right: 30px">
+        <div class="span6" >
+            <h2>Inventory: {{ inventory.inventory_id }}</h2>
+        </div>
+        <div class="pull-right center" style="margin-right: 20px; margin-top: 15px">
+            <a class="btn btn-success" href="/home">
+                Rent Now
+            </a>
+        </div>
+    </div>
+    <div class="span8 pull-right" style="margin-top: 30px;">
+        <h4><i class="icon-hand-right"></i>Inventory ID: {{ inventory.inventory_id }}</h4>
+        <h4><i class="icon-hand-right"></i> Movie:</h4>
+        <a href="/movie" style="padding-left: 30px; padding-right: 30px">
+            {{ inventory.movie_name }}
+        </a>
+        <h4><i class="icon-hand-right"></i> Rentals:</h4>
+        <a ng-repeat="r in inventory.rental_inventory"
+           href="/rental/#/detail/{{ r }}">
+            {{ r }}
+        </a>
+        <br/>
+        <div >
+            <h4><i class="icon-hand-right"></i> Details: </h4>
+            <ul>
+                <li>Store: {{inventory.store_id}}</li>
+                <li>Last Update: {{inventory.last_update}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
