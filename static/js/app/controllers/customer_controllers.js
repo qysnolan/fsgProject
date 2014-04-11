@@ -136,8 +136,15 @@ customerControllers.controller('CustomerListCtrl', function ($scope, $http) {
 });
 
 customerControllers.controller('CustomerDetailCtrl',
-    ['$scope', '$routeParams', 'Customer',
-    function($scope, $routeParams, Customer) {
+    ['$scope', '$routeParams', '$http', 'Customer',
+    function($scope, $routeParams, $http, Customer) {
         $scope.customer = Customer.get({customerId: $routeParams.customerId},
             function(customer) { });
+
+        var getBalance = function(customerId) {
+            $http.get('/get_balance/customer/'+customerId).success(function(data) {
+                $scope.balance = data;
+            });
+        };
+        getBalance($routeParams.customerId);
 }]);

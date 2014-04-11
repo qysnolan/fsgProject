@@ -10,6 +10,15 @@
         <div class="span6" >
             <h2>Customer: {{ customer.last_name }}, {{ customer.first_name }}</h2>
         </div>
+        <div class="pull-right center" style="margin-right: 20px;">
+            <h6 style="color: darkred; margin: 0">
+                {{ balance | currency:"USD$" }}
+            </h6>
+            <a class="btn btn-success"
+               href="/home">
+                <i class="icon-plus-sign"></i> Add Balance
+            </a>
+        </div>
     </div>
     <div class="span8 pull-right" style="margin-top: 30px;">
         <h4><i class="icon-hand-right"></i>

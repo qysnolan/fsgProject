@@ -37,6 +37,8 @@ urlpatterns = patterns('',
     # Customer
     url(r'^customer/', CustomerList, name='customer'),
     url(r'^add_balance/', Home, name='add_balance'),
+    url(r'^get_balance/customer/(?P<customerID>\d+)/$',
+        GetCustomerBalance, name="get_balance"),
 
     # Inventory
     url(r'^inventory/', InventoryList, name='inventory'),

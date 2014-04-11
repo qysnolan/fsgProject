@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.db import connection
 from django.http import HttpResponse
-from django.core import serializers
 
 import json
 
@@ -186,9 +185,13 @@ def CustomerList(request):
     return render(request, 'customer/customer_list.html', {'url': url})
 
 
-# Json data
-def JsonRental(request):
+def GetCustomerBalance(request, customerID):
 
-    jsonData = serializers.serialize("json", Rental.objects.all())
+    cursor = connection.cursor()
+    cursor.execute("SELECT get_customer_balance(" + customerID + ",NOW());")
+    balance = cursor.fetchall()
+    balance = list(balance)
+
+    jsonData = json.dumps(float(''.join(map(str, balance[0]))))
 
     return HttpResponse(jsonData)
