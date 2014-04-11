@@ -1,23 +1,22 @@
 <div class="container-fluid" style="margin-top: 30px">
-    <div class="span4 nav-scroll" style="margin-left: 0">
-        <div class="service-picture-frame">
-            <img class="service-picture"
-                 ng-src="/static/imgs/network.gif"
-                 alt="{{ rental.rental_id }}">
-        </div>
-    </div>
-    <div class="span8 pull-right nav-button" style="margin-right: 30px">
-        <div class="span6" >
+    <div class="span11 pull-right nav-button" style="margin-right: 30px">
+        <div class="span6" ng-show="rental.rental_id!=undefined">
             <h2>Rental: {{ rental.rental_id }}</h2>
+        </div>
+        <div class="span6" ng-show="rental.rental_id==undefined">
+            <h2>
+                <i class="icon-refresh icon-large icon-spin"></i>
+                Loading rental information...
+            </h2>
         </div>
         <div class="pull-right center" style="margin-right: 20px; margin-top: 15px">
             <a class="btn btn-success" href="/home"
-               ng-show="rental.return_date == undefined">
+               ng-show="rental.return_date==undefined&&rental.rental_id!=undefined">
                 Return
             </a>
         </div>
     </div>
-    <div class="span8 pull-right" style="margin-top: 30px;">
+    <div class="span11 pull-right" style="margin-top: 30px;">
         <h4><i class="icon-hand-right"></i> Rental ID: {{ rental.rental_id }}</h4>
         <h4><i class="icon-hand-right"></i> Inventory:</h4>
         <a href="/inventory/#/detail/{{ rental.inventory_id }}"

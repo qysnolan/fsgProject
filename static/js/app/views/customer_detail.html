@@ -7,14 +7,20 @@
         </div>
     </div>
     <div class="span8 pull-right nav-button" style="margin-right: 30px">
-        <div class="span6" >
+        <div class="span6" ng-show="customer.last_name!=undefined">
             <h2>Customer: {{ customer.last_name }}, {{ customer.first_name }}</h2>
+        </div>
+        <div class="span6" ng-show="customer.last_name==undefined">
+            <h2>
+                <i class="icon-refresh icon-large icon-spin"></i>
+                Loading customer information...
+            </h2>
         </div>
         <div class="pull-right center" style="margin-right: 20px;">
             <h6 style="color: darkred; margin: 0">
                 {{ balance | currency:"USD$" }}
             </h6>
-            <a class="btn btn-success"
+            <a class="btn btn-success" ng-show="customer.last_name!=undefined"
                href="/home">
                 <i class="icon-plus-sign"></i> Add Balance
             </a>

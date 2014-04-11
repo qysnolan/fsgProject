@@ -7,8 +7,14 @@
         </div>
     </div>
     <div class="span8 pull-right nav-button" style="margin-right: 30px">
-        <div class="span6" >
+        <div class="span6" ng-show="movie.title!=null">
             <h2>Movie: {{ movie.title }}</h2>
+        </div>
+        <div class="span6" ng-show="movie.title==undefined">
+            <h2>
+                <i class="icon-refresh icon-large icon-spin"></i>
+                Loading movie information...
+            </h2>
         </div>
         <div class="pull-right center" style="margin-right: 20px;">
             <h6 style="color: darkred; margin: 0">
@@ -27,7 +33,11 @@
             {{ movie.description }}
         </p>
         <h4><i class="icon-hand-right"></i> Actors:</h4>
-        <p style="padding-left: 30px; padding-right: 30px">
+        <p ng-show="actors == undefined">
+            <i class="icon-refresh icon-large icon-spin"></i>
+            Loading actors...
+        </p>
+        <p ng-show="actors!=null" style="padding-left: 30px; padding-right: 30px">
             <span ng-repeat="a in actors"> {{ a }}/ </span>
         </p>
         <div >
@@ -45,9 +55,16 @@
                 <li>Release Year: {{movie.release_year}}</li>
                 <li>Rental Duration: {{movie.rental_duration}} day(s)</li>
                 <li>Length: {{movie.length}} minute(s)</li>
-                <li>Rental Rate: {{movie.rental_rate | currency:"USD$"}}</li>
+                <li>Rental Rate:
+                    <span style="color: darkred; margin: 0">
+                        {{movie.rental_rate | currency:"USD$"}}
+                    </span>
+                </li>
                 <li>
-                    Replacement Cost: {{movie.replacement_cost | currency:"USD$"}}
+                    Replacement Cost:
+                    <span style="color: darkred; margin: 0">
+                        {{movie.replacement_cost | currency:"USD$"}}
+                    </span>
                 </li>
                 <li>Rating: {{movie.rating}}</li>
                 <li>Special Features: {{movie.special_features}}</li>
@@ -57,7 +74,14 @@
             </ul>
         </div>
 
-        <div>
+        <div ng-show="stock == undefined">
+            <h3>
+                <i class="icon-refresh icon-large icon-spin"></i>
+                Loading inventory information...
+            </h3>
+        </div>
+
+        <div ng-show="stock!=null">
             <div class="modal-header">
                 <h3><i class="icon-hand-right"></i> Inventory Availability</h3>
             </div>
