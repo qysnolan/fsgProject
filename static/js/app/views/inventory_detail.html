@@ -23,11 +23,12 @@
             {{ inventory.movie_name }}
         </a>
         <h4><i class="icon-hand-right"></i> Rentals:</h4>
-        <a ng-repeat="r in inventory.rental_inventory"
-           href="/rental/#/detail/{{ r }}">
-            {{ r }}
-        </a>
-        <br/>
+        <div style="padding-left: 30px; padding-right: 30px">
+            <a ng-repeat="r in inventory.rental_inventory"
+               href="/rental/#/detail/{{ r }}">
+                {{ r }}
+            </a>
+        </div>
         <div >
             <h4><i class="icon-hand-right"></i> Details: </h4>
             <ul>

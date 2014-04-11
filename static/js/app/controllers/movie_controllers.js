@@ -161,4 +161,11 @@ movieControllers.controller('MovieDetailCtrl',
             });
         };
         getActors($routeParams.movieId);
+
+        var getCategories = function(movieId) {
+            $http.get('/get_category/movie/'+movieId).success(function(data) {
+                $scope.categories = data;
+            });
+        };
+        getCategories($routeParams.movieId);
 }]);

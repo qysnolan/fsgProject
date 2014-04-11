@@ -48,6 +48,8 @@ urlpatterns = patterns('',
         CheckMovieStock, name="check_stock"),
     url(r'^get_actor/movie/(?P<movieID>\d+)/$',
         GetMovieActors, name="get_actor"),
+    url(r'^get_category/movie/(?P<movieID>\d+)/$',
+        GetMovieCategories, name="get_category"),
 
     # Json data
     url(r'^api-auth/', include('rest_framework.urls',

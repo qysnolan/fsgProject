@@ -40,11 +40,16 @@
         <div >
             <h4><i class="icon-hand-right"></i> Details: </h4>
             <ul>
+                <li>
+                    Category: <span ng-repeat="c in categories">{{ c }}/</span>
+                </li>
                 <li>Release Year: {{movie.release_year}}</li>
                 <li>Rental Duration: {{movie.rental_duration}} day(s)</li>
                 <li>Length: {{movie.length}} minute(s)</li>
                 <li>Rental Rate: {{movie.rental_rate | currency:"USD$"}}</li>
-                <li>Replacement Cost: {{movie.replacement_cost | currency:"USD$"}}</li>
+                <li>
+                    Replacement Cost: {{movie.replacement_cost | currency:"USD$"}}
+                </li>
                 <li>Rating: {{movie.rating}}</li>
                 <li>Special Features: {{movie.special_features}}</li>
                 <li>Language: {{movie.language_name}}</li>

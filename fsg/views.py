@@ -165,6 +165,19 @@ def GetMovieActors(request, movieID):
     return HttpResponse(jsonData)
 
 
+def GetMovieCategories(request, movieID):
+
+    film_category = FilmCategory.objects.all().filter(film_id=movieID)
+    categories = []
+    for fc in film_category:
+        category = fc.category
+        categories.append(category.name)
+
+    jsonData = json.dumps(categories)
+
+    return HttpResponse(jsonData)
+
+
 # Customer
 def CustomerList(request):
 
