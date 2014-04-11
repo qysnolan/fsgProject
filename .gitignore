@@ -48,3 +48,24 @@ tmp
 
 *.db
 *.rdb
+
+# Static
+
+static/admin
+static/admin/
+static/admin/**
+static/css
+static/css/
+static/css/**
+static/font
+static/font/
+static/font/**
+static/imgs
+static/imgs/
+static/imgs/**
+static/media
+static/media/
+static/media/**
+static/scss
+static/scss/
+static/scss/**
