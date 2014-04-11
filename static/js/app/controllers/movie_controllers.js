@@ -143,9 +143,14 @@ movieControllers.controller('MovieListCtrl', function ($scope, $http) {
 });
 
 movieControllers.controller('MovieDetailCtrl',
-    ['$scope', '$routeParams', 'Movie',
-    function($scope, $routeParams, Movie) {
+    ['$scope', '$routeParams','$http', 'Movie',
+    function($scope, $routeParams, $http, Movie) {
         $scope.movie = Movie.get({movieId: $routeParams.movieId},
-        function(movie) { }
-        );
+                                 function(movie) { });
+        var checkStock = function(movieId) {
+            $http.get('/check_stock/movie/'+movieId).success(function(data) {
+                $scope.stock = data;
+            });
+        };
+        checkStock($routeParams.movieId);
 }]);

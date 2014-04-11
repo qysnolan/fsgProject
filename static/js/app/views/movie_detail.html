@@ -46,5 +46,45 @@
                 <li>Last Update: {{movie.last_update}}</li>
             </ul>
         </div>
+
+        <div>
+            <div class="modal-header">
+                <h3><i class="icon-hand-right"></i> Inventory Availability</h3>
+            </div>
+            <div class="modal-body">
+                <table ng-repeat="s in stock"
+                       class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>{{ s.city }}</th>
+                    </tr>
+                    <tr>
+                        <th>In stock ({{ s.stock.count }})</th>
+                        <th>Rented ({{ s.not_stock.count }})</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        <td>
+                            <p ng-show="s.stock.count==0">No Inventory</p>
+                            <a ng-repeat="i in s.stock.inventory_id"
+                               href="/inventory/#/detail/{{ i }}">
+                                {{ i }}
+                            </a>
+                        </td>
+                        <td>
+                            <p ng-show="s.not_stock.count==0">No Inventory</p>
+                            <a ng-repeat="i in s.not_stock.inventory_id"
+                               href="/inventory/#/detail/{{ i }}">
+                                {{ i }}
+                            </a>
+                        </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
