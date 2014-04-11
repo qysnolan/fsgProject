@@ -22,13 +22,6 @@
     </div>
     <div class="span8 pull-right" style="margin-top: 30px;">
         <h4><i class="icon-hand-right"></i> Movie ID: {{ movie.film_id }}</h4>
-        <h4><i class="icon-hand-right"></i> Inventories:</h4>
-        <div style="padding-left: 30px; padding-right: 30px">
-            <a ng-repeat="r in movie.inventory_movie"
-               href="/inventory/#/detail/{{ r }}">
-                {{ r }}
-            </a>
-        </div>
         <h4><i class="icon-hand-right"></i> Description:</h4>
         <p style="padding-left: 30px; padding-right: 30px">
             {{ movie.description }}
@@ -42,6 +35,12 @@
             <ul>
                 <li>
                     Category: <span ng-repeat="c in categories">{{ c }}/</span>
+                </li>
+                <li> Inventories:
+                    <a ng-repeat="r in movie.inventory_movie"
+                       href="/inventory/#/detail/{{ r }}">
+                        {{ r }}
+                    </a>
                 </li>
                 <li>Release Year: {{movie.release_year}}</li>
                 <li>Rental Duration: {{movie.rental_duration}} day(s)</li>
