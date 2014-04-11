@@ -90,6 +90,23 @@ def InventoryList(request):
     return render(request, 'inventory/inventory_list.html', {'url': url})
 
 
+# Movie
+def MovieList(request):
+
+    post = request.POST
+
+    try:
+        searchValue = post["searchValue"]
+    except:
+        searchValue = " "
+
+    searchValue = searchValue.strip()
+    url = '/api/movies?search=' + searchValue
+
+    return render(request, 'movie/movie_list.html',
+                  {'url': url, 'searchValue': searchValue})
+
+
 def CheckMovieStock(request, movieID):
 
     stores = Store.objects.all()
@@ -98,9 +115,6 @@ def CheckMovieStock(request, movieID):
     for s in stores:
         city = s.address.city
         country = city.country
-        # address = Address.objects.all().get(address_id=s.address_id)
-        # city = City.objects.all().get(city_id=address.city_id)
-        # country = Country.objects.all().get(country_id=city.country_id)
         storeData.append({"id": s.store_id,
                           "city": city.city + ', ' + country.country})
 
@@ -133,27 +147,22 @@ def CheckMovieStock(request, movieID):
                      "stock": stockData,
                      "not_stock": rentedData})
 
-    import json
     jsonData = json.dumps(data)
 
     return HttpResponse(jsonData)
 
 
-# Movie
-def MovieList(request):
+def GetMovieActors(request, movieID):
 
-    post = request.POST
+    film_actor = FilmActor.objects.all().filter(film_id=movieID)
+    actors = []
+    for fa in film_actor:
+        actor = fa.actor
+        actors.append(actor.last_name + ", " + actor.first_name)
 
-    try:
-        searchValue = post["searchValue"]
-    except:
-        searchValue = " "
+    jsonData = json.dumps(actors)
 
-    searchValue = searchValue.strip()
-    url = '/api/movies?search=' + searchValue
-
-    return render(request, 'movie/movie_list.html',
-                  {'url': url, 'searchValue': searchValue})
+    return HttpResponse(jsonData)
 
 
 # Customer

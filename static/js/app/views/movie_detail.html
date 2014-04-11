@@ -23,13 +23,19 @@
     <div class="span8 pull-right" style="margin-top: 30px;">
         <h4><i class="icon-hand-right"></i> Movie ID: {{ movie.film_id }}</h4>
         <h4><i class="icon-hand-right"></i> Inventories:</h4>
-        <a ng-repeat="r in movie.inventory_movie"
-           href="/inventory/#/detail/{{ r }}">
-            {{ r }}
-        </a>
+        <div style="padding-left: 30px; padding-right: 30px">
+            <a ng-repeat="r in movie.inventory_movie"
+               href="/inventory/#/detail/{{ r }}">
+                {{ r }}
+            </a>
+        </div>
         <h4><i class="icon-hand-right"></i> Description:</h4>
         <p style="padding-left: 30px; padding-right: 30px">
             {{ movie.description }}
+        </p>
+        <h4><i class="icon-hand-right"></i> Actors:</h4>
+        <p style="padding-left: 30px; padding-right: 30px">
+            <span ng-repeat="a in actors"> {{ a }}/ </span>
         </p>
         <div >
             <h4><i class="icon-hand-right"></i> Details: </h4>

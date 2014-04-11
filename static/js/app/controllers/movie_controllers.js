@@ -147,10 +147,18 @@ movieControllers.controller('MovieDetailCtrl',
     function($scope, $routeParams, $http, Movie) {
         $scope.movie = Movie.get({movieId: $routeParams.movieId},
                                  function(movie) { });
+
         var checkStock = function(movieId) {
             $http.get('/check_stock/movie/'+movieId).success(function(data) {
                 $scope.stock = data;
             });
         };
         checkStock($routeParams.movieId);
+
+        var getActors = function(movieId) {
+            $http.get('/get_actor/movie/'+movieId).success(function(data) {
+                $scope.actors = data;
+            });
+        };
+        getActors($routeParams.movieId);
 }]);

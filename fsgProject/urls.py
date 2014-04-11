@@ -41,11 +41,13 @@ urlpatterns = patterns('',
     # Inventory
     url(r'^inventory/', InventoryList, name='inventory'),
     url(r'^add_inventory/', Home, name='add_inventory'),
-    url(r'^check_stock/movie/(?P<movieID>\d+)/$',
-        CheckMovieStock, name="check_stock"),
 
     # Movie
     url(r'^movie/', MovieList, name='movie'),
+    url(r'^check_stock/movie/(?P<movieID>\d+)/$',
+        CheckMovieStock, name="check_stock"),
+    url(r'^get_actor/movie/(?P<movieID>\d+)/$',
+        GetMovieActors, name="get_actor"),
 
     # Json data
     url(r'^api-auth/', include('rest_framework.urls',
