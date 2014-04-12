@@ -40,4 +40,10 @@ Explaination
   <li>
     All of the "list" pages just do searching and sorting of the data on that page except that "Movie" can be searched in all dataset on the top bar. However all of them can search and sort in all dataset.
   </li>
+  <li>
+    API address should be http://url/api/(movies or inventories or customers or rentals).
+  </li>
+  <li>
+    All AngularJS files are at static/js folder.
+  </li> 
 </ul>
