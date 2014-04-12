@@ -157,7 +157,8 @@ def GetMovieActors(request, movieID):
     actors = []
     for fa in film_actor:
         actor = fa.actor
-        actors.append(actor.last_name + ", " + actor.first_name)
+        actors.append({"actor_id": fa.actor_id,
+                       "name": actor.last_name + ", " + actor.first_name})
 
     jsonData = json.dumps(actors)
 
@@ -175,6 +176,23 @@ def GetMovieCategories(request, movieID):
     jsonData = json.dumps(categories)
 
     return HttpResponse(jsonData)
+
+
+def GetActorInfo(request, actorID):
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM actor_info WHERE actor_id=" + str(actorID))
+    actorInfo = cursor.fetchall()
+    actorInfo = list(actorInfo[0])
+
+    actorData = {"actor_id": actorID,
+                 "first_name": str(actorInfo[1]),
+                 "last_name": str(actorInfo[2]),
+                 "movie_info": str(actorInfo[3])}
+
+    # jsonData = json.dumps(actorData)
+
+    return render(request, 'movie/actor_detail.html', {'actor': actorData})
 
 
 # Customer

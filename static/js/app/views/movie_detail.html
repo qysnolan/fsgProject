@@ -20,7 +20,7 @@
             <h6 style="color: darkred; margin: 0">
                 {{ movie.rental_rate | currency:"USD$" }}
             </h6>
-            <a class="btn btn-success"
+            <a class="btn btn-success" ng-show="movie.title!=null"
                href="/home">
                 Rent Now
             </a>
@@ -38,7 +38,10 @@
             Loading actors...
         </p>
         <p ng-show="actors!=null" style="padding-left: 30px; padding-right: 30px">
-            <span ng-repeat="a in actors"> {{ a }}/ </span>
+            <a ng-repeat="a in actors"
+               href="/actor/detail/{{ a.actor_id }}">
+                {{ a.name }}<br/>
+            </a>
         </p>
         <div >
             <h4><i class="icon-hand-right"></i> Details: </h4>
