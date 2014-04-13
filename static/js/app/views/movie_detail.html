@@ -20,8 +20,10 @@
             <h6 style="color: darkred; margin: 0">
                 {{ movie.rental_rate | currency:"USD$" }}
             </h6>
-            <a class="btn btn-success" ng-show="movie.title!=null"
-               href="/home">
+            <a class="btn btn-success" ng-show="movie.title!=undefined"
+               data-toggle="modal" data-target="#stock-modal"
+               data-event-trigger="click" data-event-category="footer"
+               data-event-action="click">
                 Rent Now
             </a>
         </div>
@@ -84,7 +86,7 @@
             </h3>
         </div>
 
-        <div ng-show="stock!=null">
+        <div ng-show="stock!=null" id="stock-modal" class="modal hide fade">
             <div class="modal-header">
                 <h3><i class="icon-hand-right"></i> Inventory Availability</h3>
             </div>
